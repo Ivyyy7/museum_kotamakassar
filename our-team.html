@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tim Kami - Museum</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .heading {
+            font-family: 'Playfair Display', serif;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Header/Navigation -->
+    <header class="fixed w-full bg-white shadow-md z-50">
+        <nav class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <img src="museum-img/museum-logo.png" alt="Museum Logo" class="h-16 mr-3">
+                    <a href="index.html" class="text-2xl font-bold heading text-gray-800">
+                        MUSEUM KOTA MAKASSAR
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-800 hover:text-orange-500 transition-colors">Beranda</a>
+                    <a href="about.html" class="text-gray-800 hover:text-orange-500 transition-colors">Tentang</a>
+                    <a href="exhibitions.html" class="text-gray-800 hover:text-orange-500 transition-colors">Koleksi</a>
+                    <a href="events.html" class="text-gray-800 hover:text-orange-500 transition-colors">Acara</a>
+                    <a href="contact.html" class="text-gray-800 hover:text-orange-500 transition-colors">Kontak</a>
+                    <a href="our-team.html" class="text-orange-500">Tim Kami</a>
+                    <a href="register.html" class="bg-orange-500 text-white px-6 py-2 rounded-full hover:bg-orange-600 transition-colors inline-block text-center">
+                       Daftar
+                    </a>
+                </div>
+                <button class="md:hidden focus:outline-none" id="menu-toggle">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            <div class="md:hidden hidden" id="mobile-menu">
+                <div class="flex flex-col space-y-4 mt-4 pb-4">
+                    <a href="index.html" class="text-gray-800 hover:text-orange-500 transition-colors">Beranda</a>
+                    <a href="about.html" class="text-gray-800 hover:text-orange-500 transition-colors">Tentang</a>
+                    <a href="exhibitions.html" class="text-gray-800 hover:text-orange-500 transition-colors">Koleksi</a>
+                    <a href="events.html" class="text-gray-800 hover:text-orange-500 transition-colors">Acara</a>
+                    <a href="contact.html" class="text-gray-800 hover:text-orange-500 transition-colors">Kontak</a>
+                    <a href="our-team.html" class="text-orange-500">Tim Kami</a>
+                    <a href="register.html" class="bg-orange-500 text-white px-6 py-2 rounded-full hover:bg-orange-600 transition-colors inline-block text-center">
+                        Daftar
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-20">
+        <div class="h-[60vh] relative">
+            <img src="museum-img/our-team2-cut.jpg" 
+                 alt="Our Team" 
+                 class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black opacity-50"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+                <h1 class="text-5xl md:text-6xl font-bold heading text-white text-center">
+                    Tim Kami
+                </h1>
+            </div>
+        </div>
+    </section>
+
+    <main class="pt-24 pb-16 container mx-auto px-6">
+
+        <div class="flex flex-col md:flex-row md:space-x-12">
+            <section class="w-full md:w-1/2">
+                <h2 class="text-3xl font-bold heading mb-8 text-center flex justify-center">Tim Front End</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-8 justify-items-center">
+                    <!-- Front End Member 1 -->
+                   <!-- <div class="relative w-72 h-72 cursor-pointer rounded-lg shadow-lg overflow-hidden group mx-auto">
+                        <div class="absolute inset-0 flex justify-center items-center bg-blue-600 transform translate-y-0 group-hover:-translate-y-24 transition-transform duration-700 z-10">
+                            <img src="profile-pic/oka-pp.jpeg" alt="Pramudya Asoka Syukur" class="w-full h-full border-0 shadow-lg object-cover" />
+                        </div>
+                        <div class="absolute inset-x-0 bottom-0 flex flex-col justify-center items-center bg-white p-5 transform translate-y-full group-hover:translate-y-0 transition-transform duration-800 shadow-lg z-20">
+                            <div class="flex justify-center space-x-6 mb-0">
+                                <a href="#" aria-label="GitHub" class="text-orange-500 hover:text-orange-700 transition-colors text-3xl">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://www.instagram.com/prmdya_as/" aria-label="Instagram" class="text-orange-500 hover:text-orange-700 transition-colors text-3xl">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                            <p class="text-gray-600 text-center">Trust yourself and keep going.</p>
+                        </div>
+                    </div>-->
+                    <div class="relative w-72 h-72 cursor-pointer rounded-lg shadow-lg overflow-hidden group mx-auto">
+                        <div class="absolute inset-0 flex justify-center items-center bg-blue-600 transform translate-y-0 group-hover:-translate-y-24 transition-transform duration-700 z-10">
+                            <img src="profile-pic/april-pp.jpeg" alt="Aprilianti Nirmala S" class="w-full h-full border-0 shadow-lg object-cover" />
+                        </div>
+                        <div class="absolute inset-x-0 bottom-0 flex flex-col justify-center items-center bg-white p-5 transform translate-y-full group-hover:translate-y-0 transition-transform duration-800 shadow-lg z-20">
+                            <div class="flex justify-center space-x-6 mb-0">
+                                <a href="#" aria-label="GitHub" class="text-orange-500 hover:text-orange-700 transition-colors text-3xl">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://www.instagram.com/nrmlaapril__/" aria-label="Instagram" class="text-orange-500 hover:text-orange-700 transition-colors text-3xl">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                            <p class="text-gray-600 text-center"> <i>Conquer &#128293; or Die &#128128;.</i></p>
+                        </div>
+                    </div> 
+                    <!-- Front End Member 2 -->
+                   <div class="relative w-72 h-72 cursor-pointer rounded-lg shadow-lg overflow-hidden group mx-auto">
+                        <div class="absolute inset-0 flex justify-center items-center bg-blue-600 transform translate-y-0 group-hover:-translate-y-24 transition-transform duration-700 z-10">
+                            <img src="profile-pic/najmi-pp.png" alt="Annajmi Rauf" class="w-full h-full border-0 shadow-lg object-cover" />
+                        </div>
+                        <div class="absolute inset-x-0 bottom-0 flex flex-col justify-center items-center bg-white p-5 transform translate-y-full group-hover:translate-y-0 transition-transform duration-800 shadow-lg z-20">
+                            <div class="flex justify-center space-x-6 mb-0">
+                                <a href="#" aria-label="GitHub" class="text-orange-500 hover:text-orange-700 transition-colors text-3xl">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://www.instagram.com/annjmii_/" aria-label="Instagram" class="text-orange-500 hover:text-orange-700 transition-colors text-3xl">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                            <p class="text-gray-600 text-center"> <i>Code is like humor. When you have to explain it, it’s bad.</i></p>
+                        </div>
+                    </div>
+                    <!-- Front End Member 3 -->
+                    <div class="relative w-72 h-72 cursor-pointer rounded-lg shadow-lg overflow-hidden group mx-auto">
+                        <div class="absolute inset-0 flex justify-center items-center bg-blue-600 transform translate-y-0 group-hover:-translate-y-24 transition-transform duration-700 z-10">
+                            <img src="profile-pic/elma-pp.png" alt="Elma Nurjannah" class="w-full h-full border-0 shadow-lg object-cover" />
+                        </div>
+                        <div class="absolute inset-x-0 bottom-0 flex flex-col justify-center items-center bg-white p-5 transform translate-y-full group-hover:translate-y-0 transition-transform duration-800 shadow-lg z-20">
+                            <div class="flex justify-center space-x-6 mb-0">
+                                <a href="#" aria-label="GitHub" class="text-orange-500 hover:text-orange-700 transition-colors text-3xl">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://www.instagram.com/ellmnurjnnh/" aria-label="Instagram" class="text-orange-500 hover:text-orange-700 transition-colors text-3xl">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                            <p class="text-gray-600 text-center"> <i>Simplicity is the soul of efficiency.</i></p>
+                        </div>
+                    </div>
+                    <!-- Front End Member 4 -->
+                    <!-- <div class="relative w-72 h-72 cursor-pointer rounded-lg shadow-lg overflow-hidden group mx-auto">
+                        <div class="absolute inset-0 flex justify-center items-center bg-blue-600 transform translate-y-0 group-hover:-translate-y-24 transition-transform duration-700 z-10">
+                            <img src="profile-pic/april-pp.jpeg" alt="Aprilianti Nirmala S" class="w-full h-full border-0 shadow-lg object-cover" />
+                        </div>
+                        <div class="absolute inset-x-0 bottom-0 flex flex-col justify-center items-center bg-white p-5 transform translate-y-full group-hover:translate-y-0 transition-transform duration-800 shadow-lg z-20">
+                            <div class="flex justify-center space-x-6 mb-0">
+                                <a href="#" aria-label="GitHub" class="text-orange-500 hover:text-orange-700 transition-colors text-3xl">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://www.instagram.com/nrmlaapril__/" aria-label="Instagram" class="text-orange-500 hover:text-orange-700 transition-colors text-3xl">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                            <p class="text-gray-600 text-center">Conquer &#128293; or Die &#128128;.</p>
+                        </div>
+                    </div> --> 
+                    <div class="relative w-72 h-72 cursor-pointer rounded-lg shadow-lg overflow-hidden group mx-auto">
+                        <div class="absolute inset-0 flex justify-center items-center bg-blue-600 transform translate-y-0 group-hover:-translate-y-24 transition-transform duration-700 z-10">
+                            <img src="profile-pic/oka-pp.jpeg" alt="Pramudya Asoka Syukur" class="w-full h-full border-0 shadow-lg object-cover" />
+                        </div>
+                        <div class="absolute inset-x-0 bottom-0 flex flex-col justify-center items-center bg-white p-5 transform translate-y-full group-hover:translate-y-0 transition-transform duration-800 shadow-lg z-20">
+                            <div class="flex justify-center space-x-6 mb-0">
+                                <a href="#" aria-label="GitHub" class="text-orange-500 hover:text-orange-700 transition-colors text-3xl">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://www.instagram.com/prmdya_as/" aria-label="Instagram" class="text-orange-500 hover:text-orange-700 transition-colors text-3xl">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                            <p class="text-gray-600 text-center"> <i>Trust yourself and keep going.</i></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="w-full md:w-1/2 mt-12 md:mt-0">
+                <h2 class="text-3xl font-bold heading mb-8 text-center flex justify-center">Tim Back End</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-8 justify-items-center">
+                    <!-- Back End Member 1 -->
+                    <div class="relative w-72 h-72 cursor-pointer rounded-lg shadow-lg overflow-hidden group mx-auto">
+                        <div class="absolute inset-0 flex justify-center items-center bg-blue-600 transform translate-y-0 group-hover:-translate-y-24 transition-transform duration-700 z-10">
+                            <img src="profile-pic/naya-pp.png" alt="Nurrahmah Agusnaya" class="w-full h-full border-0 shadow-lg object-cover" />
+                        </div>
+                        <div class="absolute inset-x-0 bottom-0 flex flex-col justify-center items-center bg-white p-5 transform translate-y-full group-hover:translate-y-0 transition-transform duration-800 shadow-lg z-20">
+                            <div class="flex justify-center space-x-6 mb-0">
+                                <a href="#" aria-label="GitHub" class="text-orange-500 hover:text-orange-700 transition-colors text-3xl">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://www.instagram.com/_nrragsnayaaa/" aria-label="Instagram" class="text-orange-500 hover:text-orange-700 transition-colors text-3xl">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                            <p class="text-gray-600 text-center">Nda bermotto ja, hidup mengalir ja saya.</p>
+                        </div>
+                    </div>
+                    <!-- Back End Member 2 -->
+                    <div class="relative w-72 h-72 cursor-pointer rounded-lg shadow-lg overflow-hidden group mx-auto">
+                        <div class="absolute inset-0 flex justify-center items-center bg-blue-600 transform translate-y-0 group-hover:-translate-y-24 transition-transform duration-700 z-10">
+                            <img src="profile-pic/depi-pp.png" alt="Devi Miftahul Jannah" class="w-full h-full border-0 shadow-lg object-cover" />
+                        </div>
+                        <div class="absolute inset-x-0 bottom-0 flex flex-col justify-center items-center bg-white p-5 transform translate-y-full group-hover:translate-y-0 transition-transform duration-800 shadow-lg z-20">
+                            <div class="flex justify-center space-x-6 mb-0">
+                                <a href="#" aria-label="GitHub" class="text-orange-500 hover:text-orange-700 transition-colors text-3xl">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://www.instagram.com/smling_04/" aria-label="Instagram" class="text-orange-500 hover:text-orange-700 transition-colors text-3xl">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                            <p class="text-gray-600 text-center"> <i>Simplicity is the ultimate sophistication.</i></p>
+                        </div>
+                    </div>
+                    <!-- Back End Member 3 -->
+                    <div class="relative w-72 h-72 cursor-pointer rounded-lg shadow-lg overflow-hidden group mx-auto">
+                        <div class="absolute inset-0 flex justify-center items-center bg-blue-600 transform translate-y-0 group-hover:-translate-y-24 transition-transform duration-700 z-10">
+                            <img src="profile-pic/putri-pp.png" alt="Putri Nirmala" class="w-full h-full border-0 shadow-lg object-cover" />
+                        </div>
+                        <div class="absolute inset-x-0 bottom-0 flex flex-col justify-center items-center bg-white p-5 transform translate-y-full group-hover:translate-y-0 transition-transform duration-800 shadow-lg z-20">
+                            <div class="flex justify-center space-x-6 mb-0">
+                                <a href="#" aria-label="GitHub" class="text-orange-500 hover:text-orange-700 transition-colors text-3xl">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://www.instagram.com/nirmalaa.e/" aria-label="Instagram" class="text-orange-500 hover:text-orange-700 transition-colors text-3xl">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                            <p class="text-gray-600 text-center"> <i>Programs must be written for people to read.</i></p>
+                        </div>
+                    </div>
+                    <!-- Back End Member 4 -->
+                    <div class="relative w-72 h-72 cursor-pointer rounded-lg shadow-lg overflow-hidden group mx-auto">
+                        <div class="absolute inset-0 flex justify-center items-center bg-blue-600 transform translate-y-0 group-hover:-translate-y-24 transition-transform duration-700 z-10">
+                            <img src="profile-pic/dio-pp.png" alt="Andi Dio Nurul Awalia" class="w-full h-full border-0 shadow-lg object-cover" />
+                        </div>
+                        <div class="absolute inset-x-0 bottom-0 flex flex-col justify-center items-center bg-white p-5 transform translate-y-full group-hover:translate-y-0 transition-transform duration-800 shadow-lg z-20">
+                            <div class="flex justify-center space-x-6 mb-0">
+                                <a href="#" aria-label="GitHub" class="text-orange-500 hover:text-orange-700 transition-colors text-3xl">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                                <a href="https://www.instagram.com/andionrlwlia_/" aria-label="Instagram" class="text-orange-500 hover:text-orange-700 transition-colors text-3xl">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            </div>
+                            <p class="text-gray-600 text-center"> <i>Good code is its own best documentation.</i></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="bg-gray-900 text-white py-12 mt-16">
+        <div class="container mx-auto px-6">
+        <div class="grid md:grid-cols-4 gap-8 items-start">
+                <div class="flex flex-col items-start">
+                    <img src="museum-img/museum-logo-footer.png" alt="Museum Logo" class="h-16 mb-1">
+                    <h3 class="text-2xl font-bold heading mb-2 text-left">MUSEUM KOTA MAKASSAR</h3>
+                    <p class="text-gray-400 text-left max-w-xs">
+                        Di mana sejarah bertemu dengan masa depan, menciptakan pengalaman yang tak terlupakan untuk generasi yang akan datang.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Tautan Cepat</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-white">Tentang Kami</a></li>
+                        <li><a href="exhibitions.html" class="text-gray-400 hover:text-white">Koleksi</a></li>
+                        <li><a href="events.html" class="text-gray-400 hover:text-white">Acara</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white">Kontak</a></li>
+                        <li><a href="our-team.html" class="text-gray-400 hover:text-white">Tim Kami</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Kunjungi Kami</h4>
+                    <address class="text-gray-400 not-italic">
+                        Jl. Balaikota No.11<br />
+                        Kota Makassar, 90171<br />
+                        Instagram: @museumkotamakassar<br />
+                        Email: info@museum.com
+                    </address>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Ikuti Kami</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.instagram.com/museumkotamakassar/" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Museum. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

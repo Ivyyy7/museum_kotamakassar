@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Museum</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .heading {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Hover slide effect for the overlay image */
+        .relative img.absolute {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            border-radius: 0.5rem; /* match rounded-lg */
+            object-fit: cover;
+            transition: left 0.5s ease-in-out;
+            pointer-events: none;
+        }
+        .relative:hover img.absolute {
+            left: 0 !important;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Header/Navigation -->
+    <header class="fixed w-full bg-white shadow-md z-50">
+        <nav class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <img src="museum-img/museum-logo.png" alt="Museum Logo" class="h-16 mr-3">
+                    <a href="index.html" class="text-2xl font-bold heading text-gray-800">
+                        MUSEUM KOTA MAKASSAR
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-800 hover:text-orange-500 transition-colors">Beranda</a>
+                    <a href="about.html" class="text-orange-500">Tentang</a>
+                    <a href="exhibitions.html" class="text-gray-800 hover:text-orange-500 transition-colors">Koleksi</a>
+                    <a href="events.html" class="text-gray-800 hover:text-orange-500 transition-colors">Acara</a>
+                    <a href="contact.html" class="text-gray-800 hover:text-orange-500 transition-colors">Kontak</a>
+                    <a href="our-team.html" class="text-gray-800 hover:text-orange-500 transition-colors">Tim Kami</a>
+                    <a href="register.html" class="bg-orange-500 text-white px-6 py-2 rounded-full hover:bg-orange-600 transition-colors inline-block text-center">
+                        Daftar
+                    </a>
+                </div>
+
+                <!-- Mobile Navigation Button -->
+                <button class="md:hidden focus:outline-none" id="menu-toggle">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation Menu -->
+            <div class="md:hidden hidden" id="mobile-menu">
+                <div class="flex flex-col space-y-4 mt-4 pb-4">
+                    <a href="index.html" class="text-gray-800 hover:text-orange-500 transition-colors">Beranda</a>
+                    <a href="about.html" class="text-orange-500">Tentang</a>
+                    <a href="exhibitions.html" class="text-gray-800 hover:text-orange-500 transition-colors">Koleksi</a>
+                    <a href="events.html" class="text-gray-800 hover:text-orange-500 transition-colors">Acara</a>
+                    <a href="contact.html" class="text-gray-800 hover:text-orange-500 transition-colors">Kontak</a>
+                    <a href="our-team.html" class="text-gray-800 hover:text-orange-500 transition-colors">Tim Kami</a>
+                    <a href="register.html" class="bg-orange-500 text-white px-6 py-2 rounded-full hover:bg-orange-600 transition-colors inline-block text-center">
+                        Daftar
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-20">
+        <div class="h-[60vh] relative">
+            <img src="museum-img/museum-hero.jpeg" 
+                 alt="Museum Interior" 
+                 class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black opacity-50"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+                <h1 class="text-5xl md:text-6xl font-bold heading text-white text-center">
+                    Sejarah Kami
+                </h1>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Content -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+                <div>
+                    <h2 class="text-4xl font-bold heading mb-6">Seabad Perjalanan Sejarah</h2>
+                    <p class="text-gray-600 mb-6">
+                        Didirikan pada tahun 2000, Museum Kota Makassar hadir sebagai wujud pelestarian identitas dan sejarah Kota Makassar yang kaya akan budaya. Berawal dari gedung bekas Kantor Walikota yang dibangun pada masa kolonial Belanda tahun 1906 dan diresmikan pada tahun 1918, bangunan bersejarah ini telah menjadi saksi perjalanan panjang pemerintahan kota hingga tahun 1993.
+                    </p>
+                    <p class="text-gray-600">
+                        Kini, Museum Kota Makassar terus berkembang sebagai pusat edukasi dan kebudayaan, menghidupkan kembali sejarah melalui pameran, seminar, dan program pembelajaran yang menginspirasi generasi masa kini untuk lebih memahami dan menghargai warisan budaya kota mereka.
+                </div>
+                <div class="relative overflow-hidden rounded-lg shadow-lg w-full">
+                    <img src="museum-img/museum-kota-makassar.jpg" 
+                         alt="Museum History" 
+                         class="rounded-lg w-full block">
+                    <img src="carrousel-img/CARHE-1.jpg" 
+                         alt="Overlay Slide" 
+                         class="absolute rounded-lg w-full h-full object-cover pointer-events-none">
+                </div>
+
+            </div>
+
+            <!-- Mission & Vision -->
+            <div class="text-center mb-20">
+                <h2 class="text-4xl font-bold heading mb-12">Misi dan Visi</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-gray-50 p-8 rounded-lg">
+                        <i class="fas fa-compass text-4xl text-orange-500 mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-4">Misi Kami</h3>
+                        <p class="text-gray-600">
+                            Meningkatkan kualitas sarana dan prasarana untuk menunjang suasana belajar yang nyaman.<br>
+                            Meningkatkan profesionalisme tenaga pengelola Museum dan menumbuhkan dalam diri nilai “Museum di Hatiku”.<br>
+                            Terpeliharanya warisan budaya sebagai sarana belajar bermutu, komunikatif, dan efektif.<br>
+                            Menjadikan Museum Kota Makassar sebagai media belajar sejarah dan budaya.<br>
+                            Menjalin hubungan kerja sama dengan lembaga pendidikan dan budaya.
+                        </p>
+                    </div>
+                    <div class="bg-gray-50 p-8 rounded-lg">
+                        <i class="fas fa-eye text-4xl text-orange-500 mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-4">Visi Kami</h3>
+                        <p class="text-gray-600">
+                            Menjadi tempat terbaik untuk menghubungkan orang dengan sejarah Kota Makassar dan Budaya Daerah.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Timeline -->
+            <div class="relative">
+                <h2 class="text-4xl font-bold heading mb-12 text-center">Perjalanan Kami</h2>
+                <div class="relative md:mx-auto md:max-w-3xl">
+                    <!-- Vertical timeline line -->
+                    <div class="hidden md:block absolute left-1/2 top-0 transform -translate-x-1/2 h-full border-l-2 border-orange-500"></div>
+
+                    <!-- Timeline Item 1 -->
+                    <div class="flex flex-col md:flex-row items-center mb-8 md:justify-start md:pr-8 relative">
+                        <div class="md:w-1/2 md:pr-8 md:text-right">
+                            <div class="inline-block bg-gray-50 p-6 rounded-lg">
+                                <h3 class="text-xl font-bold mb-2">1906–1918</h3>
+                                <p class="text-gray-600">Gedung dibangun sebagai Kantor Gemeente Makassar dan diresmikan oleh Wali Kota Belanda, J.E. Danbrink, pada tahun 1918.</p>
+                            </div>
+                        </div>
+                        <div class="w-8 h-8 bg-orange-500 rounded-full border-4 border-white absolute md:static left-1/2 transform md:transform-none -translate-x-1/2 md:translate-x-0"></div>
+                        <div class="md:w-1/2"></div>
+                    </div>
+
+                    <!-- Timeline Item 2 -->
+                    <div class="flex flex-col md:flex-row items-center mb-8 md:justify-end md:pl-8 relative">
+                        <div class="md:w-1/2"></div>
+                        <div class="w-8 h-8 bg-orange-500 rounded-full border-4 border-white absolute md:static left-1/2 transform md:transform-none -translate-x-1/2 md:translate-x-0"></div>
+                        <div class="md:w-1/2 md:pl-8 md:text-left">
+                            <div class="inline-block bg-gray-50 p-6 rounded-lg">
+                                <h3 class="text-xl font-bold mb-2">1918–1993</h3>
+                                <p class="text-gray-600">Difungsikan sebagai Kantor Wali Kota Makassar hingga masa pemerintahan Suwahyo.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 3 -->
+                    <div class="flex flex-col md:flex-row items-center mb-8 md:justify-start md:pr-8 relative">
+                        <div class="md:w-1/2 md:pr-8 md:text-right">
+                            <div class="inline-block bg-gray-50 p-6 rounded-lg">
+                                <h3 class="text-xl font-bold mb-2">1993–2000</h3>
+                                <p class="text-gray-600">Setelah kantor dipindahkan, gedung tidak lagi digunakan sebagai kantor Wali Kota.</p>
+                            </div>
+                        </div>
+                        <div class="w-8 h-8 bg-orange-500 rounded-full border-4 border-white absolute md:static left-1/2 transform md:transform-none -translate-x-1/2 md:translate-x-0"></div>
+                        <div class="md:w-1/2"></div>
+                    </div>
+
+                    <!-- Timeline Item 4 -->
+                    <div class="flex flex-col md:flex-row items-center mb-8 md:justify-end md:pl-8 relative">
+                        <div class="md:w-1/2"></div>
+                        <div class="w-8 h-8 bg-orange-500 rounded-full border-4 border-white absolute md:static left-1/2 transform md:transform-none -translate-x-1/2 md:translate-x-0"></div>
+                        <div class="md:w-1/2 md:pl-8 md:text-left">
+                            <div class="inline-block bg-gray-50 p-6 rounded-lg">
+                                <h3 class="text-xl font-bold mb-2">2000–sekarang</h3>
+                                <p class="text-gray-600">Diresmikan sebagai Museum Kota Makassar pada 7 Juni 2000 oleh Drs. HB. Amiruddin Maula untuk menyajikan sejarah dan budaya Makassar.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 mt-16">
+        <div class="container mx-auto px-6">
+        <div class="grid md:grid-cols-4 gap-8 items-start">
+                <div class="flex flex-col items-start">
+                    <img src="museum-img/museum-logo-footer.png" alt="Museum Logo" class="h-16 mb-1">
+                    <h3 class="text-2xl font-bold heading mb-2 text-left">MUSEUM KOTA MAKASSAR</h3>
+                    <p class="text-gray-400 text-left max-w-xs">
+                        Di mana sejarah bertemu dengan masa depan, menciptakan pengalaman yang tak terlupakan untuk generasi yang akan datang.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Tautan Cepat</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-white">Tentang Kami</a></li>
+                        <li><a href="exhibitions.html" class="text-gray-400 hover:text-white">Koleksi</a></li>
+                        <li><a href="events.html" class="text-gray-400 hover:text-white">Acara</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white">Kontak</a></li>
+                        <li><a href="our-team.html" class="text-gray-400 hover:text-white">Tim Kami</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Kunjungi Kami</h4>
+                    <address class="text-gray-400 not-italic">
+                        Jl. Balaikota No.11<br />
+                        Kota Makassar, 90171<br />
+                        Instagram: @museumkotamakassar<br />
+                        Email: info@museum.com
+                    </address>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Ikuti Kami</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.instagram.com/museumkotamakassar/" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Museum. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

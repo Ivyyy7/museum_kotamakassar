@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Museum - Beranda</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .heading {
+            font-family: 'Playfair Display', serif;
+        }
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        /* New styles for exhibition card zoom effect */
+        .group.relative.bg-white.rounded-lg.shadow-lg.overflow-hidden.cursor-pointer {
+            overflow: hidden;
+        }
+        .group.relative.bg-white.rounded-lg.shadow-lg.overflow-hidden.cursor-pointer img {
+            transition: transform 0.5s ease;
+            transform-origin: center center;
+        }
+        .group.relative.bg-white.rounded-lg.shadow-lg.overflow-hidden.cursor-pointer:hover img {
+            transform: scale(1.2);
+        }
+        .group.relative.bg-white.rounded-lg.shadow-lg.overflow-hidden.cursor-pointer > div.absolute.inset-0.bg-black {
+            background-color: rgba(0, 0, 0, 0.6);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 10;
+        }
+        .group.relative.bg-white.rounded-lg.shadow-lg.overflow-hidden.cursor-pointer:hover > div.absolute.inset-0.bg-black {
+            opacity: 1;
+        }
+        .group.relative.bg-white.rounded-lg.shadow-lg.overflow-hidden.cursor-pointer > div.p-6.relative {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            color: white;
+            z-index: 20;
+            opacity: 0;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: transparent;
+            transition: opacity 0.5s ease;
+        }
+        .group.relative.bg-white.rounded-lg.shadow-lg.overflow-hidden.cursor-pointer:hover > div.p-6.relative {
+            opacity: 1;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .group.relative.bg-white.rounded-lg.shadow-lg.overflow-hidden.cursor-pointer > div.p-6.relative h3,
+        .group.relative.bg-white.rounded-lg.shadow-lg.overflow-hidden.cursor-pointer > div.p-6.relative p,
+        .group.relative.bg-white.rounded-lg.shadow-lg.overflow-hidden.cursor-pointer > div.p-6.relative div.flex.justify-between.items-center {
+            color: white;
+        }
+        .group.relative.bg-white.rounded-lg.shadow-lg.overflow-hidden.cursor-pointer > div.p-6.relative div.flex.justify-between.items-center a {
+            color: #fb923c; /* Tailwind orange-400 */
+        }
+        .group.relative.bg-white.rounded-lg.shadow-lg.overflow-hidden.cursor-pointer > div.p-6.relative div.flex.justify-between.items-center a:hover {
+            color: #f97316; /* Tailwind orange-500 */
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+        <!-- Loader -->
+    <div class="loader">
+        <img src="https://templatebundle.net/webimage/loader.gif" alt="Loading..." class="w-16 h-16">
+    </div>
+
+    <!-- Header/Navigation -->
+    <header class="fixed w-full bg-white shadow-md z-50">
+        <nav class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <img src="museum-img/museum-logo.png" alt="Museum Logo" class="h-16 mr-3">
+                    <a href="index.html" class="text-2xl font-bold heading text-gray-800">
+                        MUSEUM KOTA MAKASSAR
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-orange-500">Beranda</a>
+                    <a href="about.html" class="text-gray-800 hover:text-orange-500 transition-colors">Tentang</a>
+                    <a href="register.html?next=exhibitions.html" class="text-gray-800 hover:text-orange-500 transition-colors">Koleksi</a>
+                    <a href="register.html?next=event.html" class="text-gray-800 hover:text-orange-500 transition-colors">Acara</a>
+                    <a href="register.html?next=contact.html" class="text-gray-800 hover:text-orange-500 transition-colors">Kontak</a>
+                    <a href="our-team.html" class="text-gray-800 hover:text-orange-500 transition-colors">Tim Kami</a>
+                    <a href="register.html" class="bg-orange-500 text-white px-6 py-2 rounded-full hover:bg-orange-600 transition-colors inline-block text-center">
+                        Daftar
+                    </a>
+                </div>
+
+                <!-- Mobile Navigation Button -->
+                <button class="md:hidden focus:outline-none" id="menu-toggle">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation Menu -->
+            <div class="md:hidden hidden" id="mobile-menu">
+                <div class="flex flex-col space-y-4 mt-4 pb-4">
+                    <a href="index.html" class="text-orange-500">Beranda</a>
+                    <a href="about.html" class="text-gray-800 hover:text-orange-500 transition-colors">Tentang</a>
+                    <a href="register.html?next=exhibitions.html" class="text-gray-800 hover:text-orange-500 transition-colors">Koleksi</a>
+                    <a href="register.html?next=event.html" class="text-gray-800 hover:text-orange-500 transition-colors">Acara</a>
+                    <a href="register.html?next=contact.html" class="text-gray-800 hover:text-orange-500 transition-colors">Kontak</a>
+                    <a href="our-team.html" class="text-gray-800 hover:text-orange-500 transition-colors">Tim Kami</a>
+                    <a href="register.html" class="bg-orange-500 text-white px-6 py-2 rounded-full hover:bg-orange-600 transition-colors inline-block text-center">
+                        Daftar
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section Carousel -->
+    <section class="relative h-screen overflow-hidden">
+        <div class="absolute inset-0">
+            <div id="carousel" class="relative w-full h-full">
+                <!-- Slides -->
+                <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-100" style="background-image: url('carrousel-img/CARHE-1.jpg'); background-size: cover; background-position: center;"></div>
+                <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0" style="background-image: url('carrousel-img/CARHE-2.jpg'); background-size: cover; background-position: center;"></div>
+                <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0" style="background-image: url('carrousel-img/CARHE-3.jpg'); background-size: cover; background-position: center;"></div>
+                <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0" style="background-image: url('carrousel-img/CARHE-4.jpg'); background-size: cover; background-position: center;"></div>
+                <div class="absolute inset-0 transition-opacity duration-1000 ease-in-out opacity-0" style="background-image: url('carrousel-img/CARHE-5.jpg'); background-size: cover; background-position: center;"></div>
+                <div class="absolute inset-0 bg-black opacity-50"></div>
+            </div>
+        </div>
+        <div class="relative container mx-auto px-6 h-full flex items-center">
+            <div class="text-white max-w-3xl text-center md:text-left w-full">
+                <h1 class="text-5xl md:text-6xl font-bold heading mb-6">
+                    Ketika Sejarah Menjadi Hidup
+                </h1>
+                <p class="text-xl mb-8">
+                    Jelajahi koleksi kelas dunia kami dan hanyutkan diri Anda dalam kisah-kisah yang membentuk dunia kita.
+                </p>
+                <a href="register.html?next=exhibitioins.html" class="inline-block border border-orange-500 text-orange-500 px-8 py-3 rounded-full text-lg hover:bg-orange-500 hover:text-white transition-colors">
+                    Jelajahi Koleksi
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Carousel functionality
+         
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('#carousel > div:not(.bg-black)');
+            let current = 0;
+            const total = slides.length;
+            const intervalTime = 5000; // 5 seconds
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.style.opacity = i === index ? '1' : '0';
+                });
+            }
+
+            function nextSlide() {
+                current = (current + 1) % total;
+                showSlide(current);
+            }
+
+            showSlide(current);
+            setInterval(nextSlide, intervalTime);
+        });
+    </script>
+
+    <!-- About Preview Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl font-bold heading mb-6">Temukan Kisah Kami</h2>
+                    <p class="text-gray-600 mb-6">
+                        Selama lebih dari 1 abad, kami telah menjadi yang terdepan dalam melestarikan dan memamerkan pencapaian terbesar dan kisah-kisah paling menarik dari umat manusia. Museum kami lebih dari sekadar koleksi artefak - museum ini merupakan perjalanan melintasi waktu.
+                    </p>
+                    <a href="about.html" class="text-orange-500 hover:text-orange-600 font-medium inline-flex items-center">
+                       Pelajari Lebih Lanjut 
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                <div class="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer">
+                    <img src="indeks-img/preview-museum-img.jpg" 
+                         alt="Museum Gallery" 
+                         class="rounded-lg w-full">
+                    <span class="absolute inset-0 bg-black opacity-0 group-hover:opacity-50 transition-all duration-500 origin-left transform scale-x-0 group-hover:scale-x-100"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Exhibitions -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold heading mb-12 text-center">Koleksi unggulan</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Exhibition Card 1 -->
+                <div class="group relative bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer">
+                    <img src="collection-img/gedung museum/museum.jpg" 
+                         alt="Gedung Museum" 
+                         class="w-full h-64 object-cover">
+                    <div class="absolute inset-0 bg-black opacity-0 transition-opacity duration-500"></div>
+                    <div class="p-6 relative">
+                        <h3 class="text-xl font-bold mb-2">Makassar: Simfoni Kehidupan dalam Kota Multikultur</h3>
+                        <p class="mb-4">Temukan kisah harmonis tentang pertemuan budaya, perdagangan, dan identitas dalam koleksi yang mengungkap Makassar sebagai panggung megah kehidupan multikultur sejak abad ke-16.</p>
+                        <div class="flex justify-between items-center">
+                            <a href="register.html?next=exhibitions.html" class="hover:underline">Lihat Detail</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Exhibition Card 2 -->
+                <div class="group relative bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer">
+                    <img src="collection-img/patompo/ruang-kerja-patompo.jpg" 
+                         alt="Ruang Kerja" 
+                         class="w-full h-64 object-cover">
+                    <div class="absolute inset-0 bg-black opacity-0 transition-opacity duration-500"></div>
+                    <div class="p-6 relative">
+                        <h3 class="text-xl font-bold mb-2">Ruang Wali Kota: Jejak Kepemimpinan H. Andi Djemma Patompo</h3>
+                        <p class="mb-4">Telusuri jejak kepemimpinan visioner H. Andi Djemma Patompo melalui ruang kerja dan rapat bersejarah, tempat lahirnya ide-ide revolusioner yang membentuk masa depan Kota Makassar.</p>
+                        <div class="flex justify-between items-center">
+                            <a href="register.html?next=exhibitions.html" class="hover:underline">Lihat Detail</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Exhibition Card 3 -->
+                <div class="group relative bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer">
+                    <img src="collection-img/ratu wilhelmina/ratu-wilhelmina-hero.jpg" 
+                         alt="Ratu Wilhelmina" 
+                         class="w-full h-64 object-cover">
+                    <div class="absolute inset-0 bg-black opacity-0 transition-opacity duration-500"></div>
+                    <div class="p-6 relative">
+                        <h3 class="text-xl font-bold mb-2">Jejak Ratu Wilhelmina di Makassar</h3>
+                        <p class="mb-4">Telusuri jejak sejarah kolonial Makassar melalui patung langka Ratu Wilhelmina—satu-satunya di dunia, simbol kekuasaan Belanda yang tak pernah hadir secara nyata, namun membekas kuat dalam ingatan kota.</p>
+                        <div class="flex justify-between items-center">
+                            <a href="register.html?next=exhibitions.html" class="hover:underline">Lihat Detail</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Virtual Reality Museum Preview Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <a href="register.html?next=contact.html#virtual-reality-museum">
+                        <img src="museum-img/AR+use+in+museum.jpeg" 
+                             alt="Virtual Reality Museum Preview" 
+                             width="100%" 
+                             height="400" 
+                             class="rounded-lg border border-gray-300 shadow-lg"
+                             loading="lazy"
+                             title="Virtual Reality Museum Preview" />
+                    </a>
+                </div>
+                <div>
+                    <h2 class="text-4xl font-bold heading mb-6">Pratinjau Virtual Reality Museum</h2>
+                    <p class="text-gray-600 mb-6">
+                        Rasakan pengalaman mengintip virtual reality museum kami yang akan datang. Hanyutkan diri Anda dalam sejarah yang belum pernah ada sebelumnya dengan koleksi 3D interaktif dan tur berpemandu.
+                    </p>
+                    <a href="register.html?next=https://bpcbsulsel.id/fortrotterdam/" class="text-orange-500 hover:text-orange-600 font-medium inline-flex items-center">
+                        Pelajari lebih Lanjut 
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Events -->
+    <section class="py-6">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold heading mt-12 mb-12 text-center">Acara Sebelumnya</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 auto-rows-[150px]">
+                <!-- Gallery Item 1 -->
+                <div class="relative mb-4 rounded-lg overflow-hidden col-span-2 row-span-2">
+                    <img src="gallery-collection/'Belajar Menjadi Pemandu Museum1.jpg" alt="Belajar Menjadi Pemandu Museum1" class="w-full h-full object-cover rounded-lg">
+                    <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 hover:opacity-100 transition-opacity rounded-lg flex flex-col justify-center items-start text-left p-4">
+                        <h3 class="text-orange-500 text-xl font-semibold mb-2">Belajar Bersama di Museum Kota Makassar</h3>
+                        <p class="text-gray-300 text-sm">Mengenal Alat Musik Petik Tradisional Koleksi Museum Kota Makassar.</p>
+                    </div>
+                </div>
+                <!-- Gallery Item 2 -->
+                <div class="relative mb-4 rounded-lg overflow-hidden col-span-1 row-span-3">
+                    <img src="gallery-collection/Diskusi-Interaktif-di-Ruang-Edukasi1.jpg" alt="Diskusi Interaktif di Ruang Edukasi" class="w-full h-full object-cover rounded-lg">
+                    <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 hover:opacity-100 transition-opacity rounded-lg flex flex-col justify-center items-start text-left p-4">
+                        <h3 class="text-orange-500 text-xl font-semibold mb-2">Diskusi Interaktif di Ruang Edukas</h3>
+                        <p class="text-gray-300 text-sm">Suasana aktif saat peserta menyampaikan pendapatnya.</p>
+                    </div>
+                </div>
+                <!-- Gallery Item 3 -->
+                <div class="relative mb-4 rounded-lg overflow-hidden col-span-2 row-span-1">
+                    <img src="gallery-collection/Kegiatan Interaktif di Galeri Museum1.jpg" alt="Kegiatan Interaktif di Galeri Museum" class="w-full h-full object-cover rounded-lg">
+                    <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 hover:opacity-100 transition-opacity rounded-lg flex flex-col justify-center items-start text-left p-4">
+                        <h3 class="text-orange-500 text-xl font-semibold mb-2">Kegiatan Interaktif di Galeri Museum</h3>
+                        <p class="text-gray-300 text-sm">Pembelajaran aktif di tengah-tengah koleksi.</p>
+                    </div>
+                </div>
+                <!-- Gallery Item 4 -->
+                <div class="relative mb-4 rounded-lg overflow-hidden col-span-1 row-span-2">
+                    <img src="gallery-collection/Mengenal-Museum-dari-Luar1.jpg" alt="Mengenal Museum dari Luar" class="w-full h-full object-cover rounded-lg">
+                    <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 hover:opacity-100 transition-opacity rounded-lg flex flex-col justify-center items-start text-left p-4">
+                        <h3 class="text-orange-500 text-xl font-semibold mb-2">Kegiatan Outdoor : Mengenal Museum dari Luar</h3>
+                        <p class="text-gray-300 text-sm">Peserta beraktivitas di halaman museum sebelum memasuki galeri.</p>
+                    </div>
+                </div>
+                <!-- Gallery Item 5 -->
+                <div class="relative mb-4 rounded-lg overflow-hidden col-span-2 row-span-2">
+                    <img src="gallery-collection/Pemanduan Koleksi oleh Tim Museum1.jpg" alt="Pemanduan Koleksi oleh Tim Museum" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 hover:opacity-100 transition-opacity rounded-lg flex flex-col justify-center items-start text-left p-4">
+                        <h3 class="text-orange-500 text-xl font-semibold mb-2">Pemanduan Koleksi oleh Tim Museum</h3>
+                        <p class="text-gray-300 text-sm">Mencoba koleksi Sejarah diruang pameran.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-center mt-6">
+                <a href="register.html?next=events.html" class="text-orange-500 hover:text-orange-600 font-medium inline-flex items-center">
+                    Pelajari Lebih Lanjut
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div> 
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 mt-16">
+        <div class="container mx-auto px-6">
+        <div class="grid md:grid-cols-4 gap-8 items-start">
+                <div class="flex flex-col items-start">
+                    <img src="museum-img/museum-logo-footer.png" alt="Museum Logo" class="h-16 mb-1">
+                    <h3 class="text-2xl font-bold heading mb-2 text-left">MUSEUM KOTA MAKASSAR</h3>
+                    <p class="text-gray-400 text-left max-w-xs">
+                        Di mana sejarah bertemu dengan masa depan, menciptakan pengalaman yang tak terlupakan untuk generasi yang akan datang.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Tautan Cepat</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-white">Tentang Kami</a></li>
+                        <li><a href="register.html?next=exhibitions.html" class="text-gray-400 hover:text-white">Koleksi</a></li>
+                        <li><a href="register.html?next=events.html" class="text-gray-400 hover:text-white">Acara</a></li>
+                        <li><a href="register.html?next=contact.html" class="text-gray-400 hover:text-white">Kontak</a></li>
+                        <li><a href="our-team.html" class="text-gray-400 hover:text-white">Tim Kami</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Kunjungi Kami</h4>
+                    <address class="text-gray-400 not-italic">
+                        Jl. Balaikota No.11<br />
+                        Kota Makassar, 90171<br />
+                        Instagram: @museumkotamakassar<br />
+                        Email: info@museum.com
+                    </address>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Ikuti Kami</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.instagram.com/museumkotamakassar/" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Museum. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const loader = document.querySelector('.loader');
+        loader.style.display = 'none';
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+    });
+    </script>
+
+
+    <!-- JavaScript -->
+    <!-- <script>
+        // Remove loader when page is loaded
+        window.addEventListener('load', () => {
+            const loader = document.querySelector('.loader');
+            loader.style.display = 'none';
+        });
+
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        }); -->

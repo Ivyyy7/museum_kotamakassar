@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+  <style>
+    .font-playfair {
+      font-family: 'Playfair Display', serif;
+    }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+</head>
+<script>
+  window.onload = function() {
+    fetch("get_data.php")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("userTableBody").innerHTML = data;
+      });
+  
+    fetch("get_stats.php")
+      .then(res => res.json())
+      .then(stat => {
+        // Update cards
+        document.getElementById("statToday").textContent = stat.today;
+        document.getElementById("statYesterday").textContent = stat.yesterday;
+        document.getElementById("statThisMonth").textContent = stat.month_total;
+  
+        // Update chart harian
+        const ctxHarian = document.getElementById("harianChart").getContext("2d");
+        harianChart = new Chart(ctxHarian, {
+          type: 'line',
+          data: {
+            labels: stat.daily.labels,
+            datasets: [{
+              label: 'Pengunjung',
+              data: stat.daily.data,
+              borderColor: '#3B82F6',
+              backgroundColor: 'rgba(59, 130, 246, 0.2)',
+              fill: true,
+              tension: 0.3
+            }]
+          },
+          options: { responsive: true, plugins: { legend: { display: false } } }
+        });
+  
+        // Update chart bulanan
+        const ctxBulanan = document.getElementById("bulananChart").getContext("2d");
+        bulananChart = new Chart(ctxBulanan, {
+          type: 'bar',
+          data: {
+            labels: stat.monthly.labels,
+            datasets: [{
+              label: 'Pengunjung',
+              data: stat.monthly.data,
+              backgroundColor: 'rgba(34,197,94,0.7)'
+            }]
+          },
+          options: { responsive: true, plugins: { legend: { display: false } } }
+        });
+      });
+  };
+  </script>
+  
+
+<body class="font-sans">
+  <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white shadow-md p-6 hidden md:block">
+      <div class="text-center mb-2">
+        <div class="flex items-center">
+          <img src="img/museumlogo.jpg" alt="Museum Logo" class="h-12 mr-3">
+          <a href="index.html" class="text-sm font-bold heading text-gray-800">
+            MUSEUM KOTA MAKASSAR
+          </a>
+        </div>
+        <hr class="mt-3 mb-3 border-t-2 border-gray-400 w-full" />
+      </div>
+      <div class="flex flex-col items-center mb-6">
+        <div class="w-24 h-24 rounded-full border-4 border-amber-500 overflow-hidden mb-2 mx-auto flex justify-center items-center">
+          <img src="img/admin.jpeg" class="w-full h-full object-cover" alt="Foto Admin">
+        </div>
+        <h3 class="text-lg font-bold text-gray-800 text-center w-full">ADMIN MUSEUM KOTA MAKASSAR</h3>
+      </div>
+      <nav class="space-y-4 text-gray-700">
+        <a href="#" class="block hover:text-blue-600">Dashboard Admin</a>
+        <a href="profiladmin.html" class="block hover:text-blue-600">Pengaturan Profil</a>
+        <a href="loginadmin.html" class="block text-red-600 hover:text-red-800 font-semibold mt-8">Logout</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 p-6 bg-[#EA580C]">
+      <!-- Header -->
+      <div class="mb-6 pb-4">
+        <div class="flex items-center gap-3 mb-4">
+          <h1 class="text-3xl font-bold text-white">Dashboard Admin</h1>
+        </div>
+        <p class="text-sm text-white">Panel kontrol untuk manajemen pengguna dan statistik pengunjung.</p>
+      </div>
+
+      <!-- Grid Layout -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+        <!-- Manajemen User -->
+        <section class="bg-white p-6 rounded-lg shadow-md">
+          <h2 class="text-xl font-semibold mb-4 text-blue-700">Manajemen Pengguna</h2>
+          <div class="flex justify-between mb-4">
+            <input type="text" placeholder="Cari pengguna..." class="border rounded px-4 py-2 w-2/3">
+            <button onclick="exportToExcel()" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">Ekspor Excel</button>
+          </div>
+          <div class="overflow-x-auto">
+            <table id="userTable" class="w-full text-sm text-left text-gray-700">
+              <thead class="bg-gray-100 text-gray-600 uppercase text-xs">
+                <tr>
+                  <th class="px-4 py-2">Nama</th>
+                  <th class="px-4 py-2">Email</th>
+                  <th class="px-4 py-2">Nomor Whatsapp</th>
+                  <th class="px-4 py-2">Kewarganegaraan</th>
+                  <th class="px-4 py-2">Umur</th>
+                  <th class="px-4 py-2">Jenis Kelamin</th>
+                  <th class="px-4 py-2">Tanggal Kunjungan</th>
+                  <th class="px-4 py-2">Alamat</th>
+                  <th class="px-4 py-2">Pekerjaan</th>
+                </tr>
+              </thead>
+              <tbody id="userTableBody">
+                <tr><td colspan="9" class="px-4 py-6 text-center text-gray-400">Belum ada data pengguna.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Statistik Pengunjung -->
+        <section class="bg-white p-6 rounded-lg shadow-md">
+          <h2 class="text-xl font-semibold mb-4 text-green-700">Statistik Pengunjung</h2>
+
+          <!-- Summary Cards -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div class="bg-gray-100 rounded p-4 text-center">
+              <div class="text-2xl font-bold text-gray-800" id="statToday">0</div>
+              <div class="text-sm text-gray-500">Hari Ini</div>
+            </div>
+            <div class="bg-gray-100 rounded p-4 text-center">
+              <div class="text-2xl font-bold text-gray-800" id="statYesterday">0</div>
+              <div class="text-sm text-gray-500">Kemarin</div>
+            </div>
+            <div class="bg-gray-100 rounded p-4 text-center">
+              <<div class="text-2xl font-bold text-gray-800" id="statThisMonth">0</div>
+              <div class="text-sm text-gray-500">Bulan Ini</div>
+            </div>
+          </div>
+
+          <!-- Chart Harian -->
+          <div class="mb-6">
+            <h3 class="text-sm font-medium text-gray-600 mb-2">Pengunjung Harian</h3>
+            <canvas id="harianChart"></canvas>
+          </div>
+
+          <!-- Chart Bulanan -->
+          <div>
+            <h3 class="text-sm font-medium text-gray-600 mb-2">Pengunjung Bulanan</h3>
+            <canvas id="bulananChart"></canvas>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- Script Chart dan Export -->
+  <script>
+    let harianChart;
+    let bulananChart;
+    const ctxHarian = document.getElementById("harianChart").getContext("2d");
+    harianChart = new Chart(ctxHarian, {
+  type: 'line',
+  data: {
+    labels: stat.daily.labels,
+    datasets: [{
+      label: 'Pengunjung',
+      data: stat.daily.data,
+      borderColor: '#3B82F6',
+      backgroundColor: 'rgba(59, 130, 246, 0.2)',
+      fill: true,
+      tension: 0.3
+    }]
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      legend: { display: false }
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+        ticks: {
+          stepSize: 1,
+          callback: function(value) {
+            return Number.isInteger(value) ? value : null;
+          }
+        }
+      }
+    }
+  }
+});
+
+
+
+
+
+    const ctxBulanan = document.getElementById('bulananChart').getContext('2d');
+    new Chart(ctxBulanan, {
+      type: 'bar',
+      data: {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt'],
+        datasets: [{
+          label: 'Pengunjung',
+          data: [3000, 4000, 5000, 6000, 8000, 9000, 7000, 11000, 13000, 12000],
+          backgroundColor: 'rgba(34,197,94,0.7)'
+        }]
+      },
+      options: {
+  responsive: true,
+  plugins: { legend: { display: false } },
+  scales: {
+    y: {
+      beginAtZero: true,
+      ticks: {
+        stepSize: 1
+      }
+    }
+  }
+}
+    });
+
+    function exportToExcel() {
+      const table = document.getElementById("userTable");
+      const wb = XLSX.utils.table_to_book(table, { sheet: "Users" });
+      XLSX.writeFile(wb, "user-data.xlsx");
+    }
+  </script>
+</body>
+</html>

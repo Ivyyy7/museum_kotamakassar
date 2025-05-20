@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koleksi - Museum</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .heading {
+            font-family: 'Playfair Display', serif;
+        }
+        .exhibition-card:hover .exhibition-overlay {
+            opacity: 1;
+        }
+        .exhibition-overlay {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Header/Navigation -->
+    <header class="fixed w-full bg-white shadow-md z-50">
+        <nav class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <img src="museum-img/museum-logo.png" alt="Museum Logo" class="h-16 mr-3">
+                    <a href="index.html" class="text-2xl font-bold heading text-gray-800">
+                        MUSEUM KOTA MAKASSAR
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-800 hover:text-orange-500 transition-colors">Beranda</a>
+                    <a href="about.html" class="text-gray-800 hover:text-orange-500 transition-colors">Tentang</a>
+                    <a href="exhibitions.html" class="text-orange-500">Koleksi</a>
+                    <a href="events.html" class="text-gray-800 hover:text-orange-500 transition-colors">Acara</a>
+                    <a href="contact.html" class="text-gray-800 hover:text-orange-500 transition-colors">Kontak</a>
+                    <a href="our-team.html" class="text-gray-800 hover:text-orange-500 transition-colors">Tim Kami</a>
+                    <a href="register.html" class="bg-orange-500 text-white px-6 py-2 rounded-full hover:bg-orange-600 transition-colors inline-block text-center">
+                        Daftar
+                    </a>
+                </div>
+
+            <!-- Mobile Navigation Button -->
+                <button class="md:hidden focus:outline-none" id="menu-toggle">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation Menu -->
+            <div class="md:hidden hidden" id="mobile-menu">
+                <div class="flex flex-col space-y-4 mt-4 pb-4">
+                    <a href="index.html" class="text-gray-800 hover:text-orange-500 transition-colors">Beranda</a>
+                    <a href="about.html" class="text-gray-800 hover:text-orange-500 transition-colors">Tentang</a>
+                    <a href="exhibitions.html" class="text-orange-500">Koleksi</a>
+                    <a href="events.html" class="text-gray-800 hover:text-orange-500 transition-colors">Acara</a>
+                    <a href="contact.html" class="text-gray-800 hover:text-orange-500 transition-colors">Kontak</a>
+                    <a href="our-team.html" class="text-gray-800 hover:text-orange-500 transition-colors">Tim Kami</a>
+                    <a href="register.html" class="bg-orange-500 text-white px-6 py-2 rounded-full hover:bg-orange-600 transition-colors inline-block text-center">
+                        Daftar
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-20">
+        <div class="h-[60vh] relative">
+            <img src="museum-img/Koleksi-Museum.jpg" 
+                 alt="Exhibition Hall" 
+                 class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black opacity-50"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+                <h1 class="text-5xl md:text-6xl font-bold heading text-white text-center">
+                    Koleksi Saat Ini
+                </h1>
+            </div>
+        </div>
+    </section>
+
+    <!-- Exhibition Filters -->
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-wrap justify-center gap-4">
+                <button class="bg-orange-500 text-white px-6 py-2 rounded-full">
+                    Semua Koleksi
+                </button>
+                <button class="bg-white text-gray-800 px-6 py-2 rounded-full hover:bg-orange-500 hover:text-white transition-colors">
+                    Terkini
+                </button>
+                <button class="bg-white text-gray-800 px-6 py-2 rounded-full hover:bg-orange-500 hover:text-white transition-colors">
+                    Akan Datang
+                </button>
+                <button class="bg-white text-gray-800 px-6 py-2 rounded-full hover:bg-orange-500 hover:text-white transition-colors">
+                    Terdahulu
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Exhibitions Grid -->
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Collection Card 1 -->
+                <div class="exhibition-card relative overflow-hidden rounded-lg shadow-lg group">
+                    <img src="collection-img/gedung museum/museum.jpg" 
+                         alt="Museum Kota Makassar" 
+                         class="w-full h-80 object-cover">
+                    <div class="exhibition-overlay absolute inset-0 bg-black bg-opacity-75 flex flex-col justify-end p-6">
+                        <h3 class="text-2xl font-bold text-white mb-2">Jejak Makassar: Museum Sejarah dan Budaya Kota</h3>
+                        <p class="text-gray-300 mb-4">Telusuri kisah panjang Kota Makassar melalui koleksi sejarah dan budaya yang menggambarkan identitas kota multikultur ini dari masa ke masa.
+                        </p>
+                        <div class="flex justify-end items-center">
+                        <a href="collection1.html" class="border border-orange-500 text-orange-500 px-4 py-2 rounded-full hover:bg-orange-500 hover:text-white transition-colors">
+                                Pelajari Lebih Lanjut
+                        </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Collection Card 2 -->
+                <div class="exhibition-card relative overflow-hidden rounded-lg shadow-lg group">
+                    <img src="collection-img/makassar awal/istana-kesultanan-gowa.jpg" 
+                         alt="istana-kesultanan-gowa" 
+                         class="w-full h-80 object-cover">
+                    <div class="exhibition-overlay absolute inset-0 bg-black bg-opacity-75 flex flex-col justify-end p-6">
+                        <h3 class="text-2xl font-bold text-white mb-2">Kerajaan Kembar Gowa-Tallo Atau Kerajaan Makassar 1528</h3>
+                        <p class="text-gray-300 mb-4">Temukan jejak kejayaan maritim dan diplomasi kerajaan besar Nusantara dalam kisah megah Kerajaan Kembar Gowa-Tallo, cikal bakal Makassar sebagai pusat perdagangan dunia timur.</p>
+                        <div class="flex justify-end items-center">
+                        <a href="collection2.html" class="border border-orange-500 text-orange-500 px-4 py-2 rounded-full hover:bg-orange-500 hover:text-white transition-colors">
+                                Pelajari Lebih Lanjut
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Collection Card 3 -->
+                <div class="exhibition-card relative overflow-hidden rounded-lg shadow-lg group">
+                    <img src="collection-img/perang makassar/perang-hero.jpg" 
+                         alt="Perang Makassar" 
+                         class="w-full h-80 object-cover">
+                    <div class="exhibition-overlay absolute inset-0 bg-black bg-opacity-75 flex flex-col justify-end p-6">
+                        <h3 class="text-2xl font-bold text-white mb-2">Perang Makassar 1666–1669: Perebutan Hegemoni di Nusantara</h3>
+                        <p class="text-gray-300 mb-4">Saksikan babak penting dalam sejarah Nusantara saat Makassar berdiri tegak melawan dominasi VOC, dalam perang dahsyat yang mengguncang jalur perdagangan dunia abad ke-17.</p>
+                        <div class="flex justify-end items-center">
+                        <a href="collection3.html" class="border border-orange-500 text-orange-500 px-4 py-2 rounded-full hover:bg-orange-500 hover:text-white transition-colors">
+                                Pelajari Lebih Lanjut
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Collection Card 4 -->
+                <div class="exhibition-card relative overflow-hidden rounded-lg shadow-lg group">
+                    <img src="collection-img/ratu wilhelmina/ratu-wilhelmina-hero.jpg" 
+                         alt="ratu-wilhelmina" 
+                         class="w-full h-80 object-cover">
+                    <div class="exhibition-overlay absolute inset-0 bg-black bg-opacity-75 flex flex-col justify-end p-6">
+                        <h3 class="text-2xl font-bold text-white mb-2">Jejak Ratu Wilhelmina di Makassar</h3>
+                        <p class="text-gray-300 mb-4">Telusuri jejak sejarah kolonial Makassar melalui patung langka Ratu Wilhelmina—satu-satunya di dunia, simbol kekuasaan Belanda yang tak pernah hadir secara nyata, namun membekas kuat dalam ingatan kota.</p>
+                        <div class="flex justify-end items-center">
+                        <a href="collection4.html" class="border border-orange-500 text-orange-500 px-4 py-2 rounded-full hover:bg-orange-500 hover:text-white transition-colors">
+                                Pelajari Lebih Lanjut
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Collection Card 5 -->
+                <div class="exhibition-card relative overflow-hidden rounded-lg shadow-lg group">
+                    <img src="collection-img/makassar multikultur/baju-adat-tionghoa-india-melayu.jpg" 
+                         alt="Modern Photography" 
+                         class="w-full h-80 object-cover">
+                    <div class="exhibition-overlay absolute inset-0 bg-black bg-opacity-75 flex flex-col justify-end p-6">
+                        <h3 class="text-2xl font-bold text-white mb-2">Makassar: Simfoni Kehidupan dalam Kota Multikultur</h3>
+                        <p class="text-gray-300 mb-4">Temukan kisah harmonis tentang pertemuan budaya, perdagangan, dan identitas dalam koleksi yang mengungkap Makassar sebagai panggung megah kehidupan multikultur sejak abad ke-16.</p>
+                        <div class="flex justify-end items-center">
+                        <a href="collection5.html" class="border border-orange-500 text-orange-500 px-4 py-2 rounded-full hover:bg-orange-500 hover:text-white transition-colors">
+                                Pelajari Lebih Lanjut
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Collection Card 6 -->
+                <div class="exhibition-card relative overflow-hidden rounded-lg shadow-lg group">
+                    <img src="collection-img/patompo/ruang-kerja-patompo.jpg" 
+                         alt="Ruang Kerja Patompo" 
+                         class="w-full h-80 object-cover">
+                    <div class="exhibition-overlay absolute inset-0 bg-black bg-opacity-75 flex flex-col justify-end p-6">
+                        <h3 class="text-2xl font-bold text-white mb-2">Ruang Wali Kota: Jejak Kepemimpinan H. Andi Djemma Patompo</h3>
+                        <p class="text-gray-300 mb-4">Telusuri jejak kepemimpinan visioner H. Andi Djemma Patompo melalui ruang kerja dan rapat bersejarah, tempat lahirnya ide-ide revolusioner yang membentuk masa depan Kota Makassar.</p>
+                        <div class="flex justify-end items-center">
+                        <a href="collection6.html" class="border border-orange-500 text-orange-500 px-4 py-2 rounded-full hover:bg-orange-500 hover:text-white transition-colors">
+                                Pelajari Lebih Lanjut
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 mt-16">
+        <div class="container mx-auto px-6">
+        <div class="grid md:grid-cols-4 gap-8 items-start">
+                <div class="flex flex-col items-start">
+                    <img src="museum-img/museum-logo-footer.png" alt="Museum Logo" class="h-16 mb-1">
+                    <h3 class="text-2xl font-bold heading mb-2 text-left">MUSEUM KOTA MAKASSAR</h3>
+                    <p class="text-gray-400 text-left max-w-xs">
+                       Di mana sejarah bertemu dengan masa depan, menciptakan pengalaman yang tak terlupakan untuk generasi yang akan datang.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Tautan Cepat</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-white">Tentang Kami</a></li>
+                        <li><a href="exhibitions.html" class="text-gray-400 hover:text-white">Koleksi</a></li>
+                        <li><a href="events.html" class="text-gray-400 hover:text-white">Acara</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white">Kontak</a></li>
+                        <li><a href="our-team.html" class="text-gray-400 hover:text-white">Tim Kami</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Kunjungi Kami</h4>
+                    <address class="text-gray-400 not-italic">
+                        Jl. Balaikota No.11<br />
+                        Kota Makassar, 90171<br />
+                        Instagram: @museumkotamakassar<br />
+                        Email: info@museum.com
+                    </address>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Ikuti Kami</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.instagram.com/museumkotamakassar/" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Museum. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+          if (!localStorage.getItem("userLoggedIn")) {
+            alert("Silakan daftar atau login terlebih dahulu untuk mengakses halaman ini.");
+            window.location.href = "register.html?next=" + encodeURIComponent(window.location.pathname);
+          }
+        });
+      </script>      
+</body>
+</html>

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acara - Museum</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .heading {
+            font-family: 'Playfair Display', serif;
+        }
+        .event-card {
+            transition: transform 0.3s ease;
+        }
+        .event-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Header/Navigation -->
+    <header class="fixed w-full bg-white shadow-md z-50">
+        <nav class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <img src="museum-img/museum-logo.png" alt="Museum Logo" class="h-16 mr-3">
+                    <a href="index.html" class="text-2xl font-bold heading text-gray-800">
+                        MUSEUM KOTA MAKASSAR
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-800 hover:text-orange-500 transition-colors">Beranda</a>
+                    <a href="about.html" class="text-gray-800 hover:text-orange-500 transition-colors">Tentang</a>
+                    <a href="exhibitions.html" class="text-gray-800 hover:text-orange-500 transition-colors">Koleksi</a>
+                    <a href="events.html" class="text-orange-500">Acara</a>
+                    <a href="contact.html" class="text-gray-800 hover:text-orange-500 transition-colors">Kontak</a>
+                    <a href="our-team.html" class="text-gray-800 hover:text-orange-500 transition-colors">Tim Kami</a>
+                    <a href="register.html" class="bg-orange-500 text-white px-6 py-2 rounded-full hover:bg-orange-600 transition-colors inline-block text-center">
+                        Daftar
+                    </a>
+                </div>
+
+                <!-- Mobile Navigation Button -->
+                <button class="md:hidden focus:outline-none" id="menu-toggle">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation Menu -->
+            <div class="md:hidden hidden" id="mobile-menu">
+                <div class="flex flex-col space-y-4 mt-4 pb-4">
+                    <a href="index.html" class="text-gray-800 hover:text-orange-500 transition-colors">Beranda</a>
+                    <a href="about.html" class="text-gray-800 hover:text-orange-500 transition-colors">Tentang</a>
+                    <a href="exhibitions.html" class="text-gray-800 hover:text-orange-500 transition-colors">Koleksi</a>
+                    <a href="events.html" class="text-orange-500">Acara</a>
+                    <a href="contact.html" class="text-gray-800 hover:text-orange-500 transition-colors">Kontak</a>
+                    <a href="our-team.html" class="text-gray-800 hover:text-orange-500 transition-colors">Tim Kami</a>
+                    <a href="register.html" class="bg-orange-500 text-white px-6 py-2 rounded-full hover:bg-orange-600 transition-colors inline-block text-center">
+                        Daftar
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-20">
+        <div class="h-[60vh] relative">
+            <img src="gallery-collection/Pertunjukan-Tari-Tradisional2.jpg" 
+                 alt="Museum Events" 
+                 class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black opacity-50"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+                <h1 class="text-5xl md:text-6xl font-bold heading text-white text-center">
+                    Acara Sebelumnya
+                </h1>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Filters -->
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-wrap justify-center gap-4">
+                <button class="bg-orange-500 text-white px-6 py-2 rounded-full">
+                    Semua Acara
+                </button>
+                <button class="bg-white text-gray-800 px-6 py-2 rounded-full hover:bg-orange-500 hover:text-white transition-colors">
+                    Minggu Ini
+                </button>
+                <button class="bg-white text-gray-800 px-6 py-2 rounded-full hover:bg-orange-500 hover:text-white transition-colors">
+                    Bulan Ini
+                </button>
+                <button class="bg-white text-gray-800 px-6 py-2 rounded-full hover:bg-orange-500 hover:text-white transition-colors">
+                    Bulan Selanjutnya
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="py-6">
+        <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold mt-4 mb-12 text-center heading">Galeri Acara Terdahulu</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 auto-rows-[150px]">
+                <!-- Gallery Item 1 -->
+                <div class="relative mb-4 rounded-lg overflow-hidden col-span-2 row-span-2">
+                    <img src="gallery-collection/'Belajar Menjadi Pemandu Museum1.jpg" alt="Belajar Menjadi Pemandu Museum" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 hover:opacity-100 transition-opacity rounded-lg flex flex-col justify-center items-start text-left p-4">
+                        <h3 class="text-orange-500 text-xl font-semibold mb-2">Pengenalan Program 'Belajar Menjadi Pemandu Museum'</h3>
+                        <p class="text-gray-300 text-sm">Sesi pembukaan kegiatan edukasi museum bagi siswa SMP.</p>
+                    </div>
+                </div>
+                <!-- Gallery Item 2 -->
+                <div class="relative mb-4 rounded-lg overflow-hidden col-span-1 row-span-3">
+                    <img src="gallery-collection/belajar-pemandu-museum1.jpg" alt="Belajar Menjadi Pemandu Museum" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 hover:opacity-100 transition-opacity rounded-lg flex flex-col justify-center items-start text-left p-4">
+                        <h3 class="text-orange-500 text-xl font-semibold mb-2">Pengenalan Program 'Belajar Menjadi Pemandu Museum'</h3>
+                        <p class="text-gray-300 text-sm">Sesi pembukaan kegiatan edukasi museum bagi siswa SMP.</p>
+                    </div>
+                </div>
+                <!-- Gallery Item 3 -->
+                <div class="relative mb-4 rounded-lg overflow-hidden col-span-2 row-span-1">
+                    <img src="gallery-collection/belajar-pemandu-museum2.jpg" alt="Belajar Menjadi Pemandu Museum" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 hover:opacity-100 transition-opacity rounded-lg flex flex-col justify-center items-start text-left p-4">
+                        <h3 class="text-orange-500 text-xl font-semibold mb-2">Pengenalan Program 'Belajar Menjadi Pemandu Museum'</h3>
+                        <p class="text-gray-300 text-sm">Sesi pembukaan kegiatan edukasi museum bagi siswa SMP.</p>
+                    </div>
+                </div>
+                <!-- Gallery Item 4 -->
+                <div class="relative mb-4 rounded-lg overflow-hidden col-span-1 row-span-3">
+                    <img src="gallery-collection/Penampilan-Budaya-di-Museum1.jpg" alt="Penampilan Budaya di Museum" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 hover:opacity-100 transition-opacity rounded-lg flex flex-col justify-center items-start text-left p-4">
+                        <h3 class="text-orange-500 text-xl font-semibold mb-2">Penampilan Budaya di Museum</h3>
+                        <p class="text-gray-300 text-sm">Peserta tampil dalam balutan busana tradisional. .</p>
+                    </div>
+                </div>
+                <!-- Gallery Item 5 -->
+                <div class="relative mb-4 rounded-lg overflow-hidden col-span-2 row-span-2">
+                    <img src="gallery-collection/Pertunjukan-Tari-Tradisional1.jpg" alt="Pertunjukan Tari Tradisional" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 hover:opacity-100 transition-opacity rounded-lg flex flex-col justify-center items-start text-left p-4">
+                        <h3 class="text-orange-500 text-xl font-semibold mb-2">Pertunjukan Tari Tradisional</h3>
+                        <p class="text-gray-300 text-sm">Memperkenalkan budaya lokal lewat seni tari di museum..</p>
+                    </div>
+                </div>
+                <!-- Gallery Item 6 -->
+                <div class="relative mb-4 rounded-lg overflow-hidden col-span-2 row-span-1">
+                    <img src="gallery-collection/Pertunjukan-Tari-Tradisional2.jpg" alt="Pertunjukan Tari Tradisional" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 hover:opacity-100 transition-opacity rounded-lg flex flex-col justify-center items-start text-left p-4">
+                        <h3 class="text-orange-500 text-xl font-semibold mb-2">Pertunjukan Tari Tradisional</h3>
+                        <p class="text-gray-300 text-sm">Memperkenalkan budaya lokal lewat seni tari di museum..</p>
+                    </div>
+                </div>
+                <!-- Gallery Item 7 -->
+                <div class="relative mb-4 rounded-lg overflow-hidden col-span-2 row-span-2">
+                    <img src="gallery-collection/Diskusi-Interaktif-di-Ruang-Edukasi1.jpg" alt="Diskusi Interaktif di Ruang Edukasi" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 hover:opacity-100 transition-opacity rounded-lg flex flex-col justify-center items-start text-left p-4">
+                        <h3 class="text-orange-500 text-xl font-semibold mb-2">Diskusi Interaktif di Ruang Edukasi</h3>
+                        <p class="text-gray-300 text-sm">Suasana aktif saat peserta menyampaikan pendapatnya.</p>
+                    </div>
+                </div>
+                <!-- Gallery Item 8 -->
+                <div class="relative mb-4 rounded-lg overflow-hidden col-span-1 row-span-2">
+                    <img src="gallery-collection/Diskusi-Interaktif-di-Ruang-Edukasi2.jpg" alt="Diskusi Interaktif di Ruang Edukasi" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 hover:opacity-100 transition-opacity rounded-lg flex flex-col justify-center items-start text-left p-4">
+                        <h3 class="text-orange-500 text-xl font-semibold mb-2">Diskusi Interaktif di Ruang Edukasi</h3>
+                        <p class="text-gray-300 text-sm">Suasana aktif saat peserta menyampaikan pendapatnya.</p>
+                    </div>
+                </div>
+                <!-- Gallery Item 9 -->
+                <div class="relative mb-4 rounded-lg overflow-hidden col-span-2 row-span-2">
+                    <img src="gallery-collection/Pemanduan Koleksi oleh Tim Museum1.jpg" alt="Pemanduan Koleksi oleh Tim Museum" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 hover:opacity-100 transition-opacity rounded-lg flex flex-col justify-center items-start text-left p-4">
+                        <h3 class="text-orange-500 text-xl font-semibold mb-2">Pemanduan Koleksi oleh Tim Museum</h3>
+                        <p class="text-gray-300 text-sm">Pengenalan koleksi secara langsung di ruang pamer.</p>
+                    </div>
+                </div>
+                <!-- Gallery Item 8 -->
+                <div class="relative mb-4 rounded-lg overflow-hidden col-span-1 row-span-2">
+                    <img src="gallery-collection/Kegiatan Interaktif di Galeri Museum1.jpg" alt="Kegiatan Interaktif di Galeri Museum" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 hover:opacity-100 transition-opacity rounded-lg flex flex-col justify-center items-start text-left p-4">
+                        <h3 class="text-orange-500 text-xl font-semibold mb-2">Kegiatan Interaktif di Galeri Museum</h3>
+                        <p class="text-gray-300 text-sm">Pembelajaran aktif di tengah-tengah koleksi.</p>
+                    </div>
+                </div>
+                <!-- Gallery Item 10 -->
+                <div class="relative mb-4 rounded-lg overflow-hidden col-span-2 row-span-1">
+                    <img src="gallery-collection/Kegiatan Interaktif di Galeri Museum2.jpg" alt="Kegiatan Interaktif di Galeri Museum" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 hover:opacity-100 transition-opacity rounded-lg flex flex-col justify-center items-start text-left p-4">
+                        <h3 class="text-orange-500 text-xl font-semibold mb-2">Kegiatan Interaktif di Galeri Museum</h3>
+                        <p class="text-gray-300 text-sm">Pembelajaran aktif di tengah-tengah koleksi.</p>
+                    </div>
+                </div>
+                <!-- Gallery Item 11 -->
+                <div class="relative mb-4 rounded-lg overflow-hidden col-span-1 row-span-2">
+                    <img src="gallery-collection/Mengenal-Museum-dari-Luar1.jpg" alt="Kegiatan Outdoor: Mengenal Museum dari Luar" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 hover:opacity-100 transition-opacity rounded-lg flex flex-col justify-center items-start text-left p-4">
+                        <h3 class="text-orange-500 text-xl font-semibold mb-2">Kegiatan Outdoor: Mengenal Museum dari Luar</h3>
+                        <p class="text-gray-300 text-sm">Peserta beraktivitas di halaman museum sebelum memasuki galeri.</p>
+                    </div>
+                </div>
+                <!-- Gallery Item 12 -->
+                <div class="relative mb-4 rounded-lg overflow-hidden col-span-2 row-span-2">
+                    <img src="gallery-collection/Mengenal-Museum-dari-Luar2.jpg" alt="Kegiatan Outdoor: Mengenal Museum dari Luar" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 hover:opacity-100 transition-opacity rounded-lg flex flex-col justify-center items-start text-left p-4">
+                        <h3 class="text-orange-500 text-xl font-semibold mb-2">Kegiatan Outdoor: Mengenal Museum dari Luar</h3>
+                        <p class="text-gray-300 text-sm">Peserta beraktivitas di halaman museum sebelum memasuki galeri..</p>
+                    </div>
+                </div>
+                <!-- Gallery Item 13 -->
+                <div class="relative mb-4 rounded-lg overflow-hidden col-span-1 row-span-3">
+                    <img src="gallery-collection/Mengenal-Museum-dari-Luar3.jpg" alt="Kegiatan Outdoor: Mengenal Museum dari Luar" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 hover:opacity-100 transition-opacity rounded-lg flex flex-col justify-center items-start text-left p-4">
+                        <h3 class="text-orange-500 text-xl font-semibold mb-2">Kegiatan Outdoor: Mengenal Museum dari Luar</h3>
+                        <p class="text-gray-300 text-sm">Peserta beraktivitas di halaman museum sebelum memasuki galeri..</p>
+                    </div>
+                </div>
+                <!-- Gallery Item 14 -->
+                <div class="relative mb-4 rounded-lg overflow-hidden col-span-2 row-span-2">
+                    <img src="gallery-collection/Seisi-Perkenalan-koleksi1.jpg" alt="Seisi Perkenalan koleksi " class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 hover:opacity-100 transition-opacity rounded-lg flex flex-col justify-center items-start text-left p-4">
+                        <h3 class="text-orange-500 text-xl font-semibold mb-2">Seisi Perkenalan koleksi </h3>
+                        <p class="text-gray-300 text-sm">Peserta mencoba menggunakan alat music sebagai koleksi museum.</p>
+                    </div>
+                </div>
+                <!-- Gallery Item 15 -->
+                <div class="relative mb-4 rounded-lg overflow-hidden col-span-1 row-span-2">
+                    <img src="gallery-collection/belajar-pemandu-museum1.jpg" alt="Pengenalan Program 'Belajar Menjadi Pemandu Museum'" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 hover:opacity-100 transition-opacity rounded-lg flex flex-col justify-center items-start text-left p-4">
+                        <h3 class="text-orange-500 text-xl font-semibold mb-2">Pengenalan Program 'Belajar Menjadi Pemandu Museum'</h3>
+                        <p class="text-gray-300 text-sm">Sesi pembukaan kegiatan edukasi museum bagi siswa SMP.</p>
+                    </div>
+                </div>
+                <!-- Gallery Item 16 -->
+                <div class="relative mb-4 rounded-lg overflow-hidden col-span-2 row-span-1">
+                    <img src="gallery-collection/Pemanduan Koleksi oleh Tim Museum1.jpg" alt="Pemanduan Koleksi oleh Tim Museum" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 hover:opacity-100 transition-opacity rounded-lg flex flex-col justify-center items-start text-left p-4">
+                        <h3 class="text-orange-500 text-xl font-semibold mb-2">Pemanduan Koleksi oleh Tim Museum</h3>
+                        <p class="text-gray-300 text-sm">Mencoba koleksi Sejarah diruang pameran</p>
+                    </div>
+                </div>
+                <!-- Gallery Item 17 -->
+                <div class="relative mb-4 rounded-lg overflow-hidden col-span-2 row-span-1">
+                    <img src="gallery-collection/Tur-Galeri-Museum-Bersama-Kurator1.jpg" alt="Tur Galeri Museum Bersama Kurator" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 hover:opacity-100 transition-opacity rounded-lg flex flex-col justify-center items-start text-left p-4">
+                        <h3 class="text-orange-500 text-xl font-semibold mb-2">Pemanduan Koleksi oleh Tim Museum</h3>
+                        <p class="text-gray-300 text-sm">Pengenalan koleksi secara langsung di ruang pamer.</p>
+                    </div>
+                </div>
+                <!-- Gallery Item 18 -->
+                <div class="relative mb-4 rounded-lg overflow-hidden col-span-2 row-span-1">
+                    <img src="gallery-collection/Foto-Bersama-di-Depan-Museum-Kota-Makassar1.jpg" alt="Foto Bersama di Depan Museum Kota Makassar" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 hover:opacity-100 transition-opacity rounded-lg flex flex-col justify-center items-start text-left p-4">
+                        <h3 class="text-orange-500 text-xl font-semibold mb-2">Foto Bersama di Depan Museum Kota Makassar</h3>
+                        <p class="text-gray-300 text-sm">Mengabadikan momen kebersamaan di akhir sesi outdoor.</p>
+                    </div>
+                </div>
+                <!-- Gallery Item 19 -->
+                <div class="relative mb-4 rounded-lg overflow-hidden col-span-1 row-span-1">
+                    <img src="gallery-collection/Pembukaan-Kegiatan-Edukasi-Museum1.jpg" alt="Pembukaan Kegiatan Edukasi Museum" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-60 opacity-0 hover:opacity-100 transition-opacity rounded-lg flex flex-col justify-center items-start text-left p-4">
+                        <h3 class="text-orange-500 text-xl font-semibold mb-2">Pembukaan Kegiatan Edukasi Museum</h3>
+                        <p class="text-gray-300 text-sm">Pembukaan kegiatan oleh narasumber dan tim museum bersama peserta.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 mt-16">
+        <div class="container mx-auto px-6">
+        <div class="grid md:grid-cols-4 gap-8 items-start">
+                <div class="flex flex-col items-start">
+                    <img src="museum-img/museum-logo-footer.png" alt="Museum Logo" class="h-16 mb-1">
+                    <h3 class="text-2xl font-bold heading mb-2 text-left">MUSEUM KOTA MAKASSAR</h3>
+                    <p class="text-gray-400 text-left max-w-xs">
+                        Di mana sejarah bertemu dengan masa depan, menciptakan pengalaman yang tak terlupakan untuk generasi yang akan datang.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Tautan Cepat</h4>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-400 hover:text-white">Tentang Kami</a></li>
+                        <li><a href="exhibitions.html" class="text-gray-400 hover:text-white">Koleksi</a></li>
+                        <li><a href="events.html" class="text-gray-400 hover:text-white">Acara</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white">Kontak</a></li>
+                        <li><a href="our-team.html" class="text-gray-400 hover:text-white">Tim Kami</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Kunjungi Kami</h4>
+                    <address class="text-gray-400 not-italic">
+                        Jl. Balaikota No.11<br />
+                        Kota Makassar, 90171<br />
+                        Instagram: @museumkotamakassar<br />
+                        Email: info@museum.com
+                    </address>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Ikuti Kami</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://www.instagram.com/museumkotamakassar/" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Museum. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
