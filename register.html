@@ -103,41 +103,35 @@
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-          const form = document.getElementById("register-form");
-      
-          if (form) {
-            form.addEventListener("submit", function (e) {
-              e.preventDefault(); // Mencegah reload halaman
-      
-              // Simulasi pengiriman data ke server
-              const formData = new FormData(form);
-      
-              fetch("simpandata.php", {
-                    method: "POST",
-                    body: formData,
-                    })
-                    .then((response) => {
-                    if (response.ok) {
-                        // ✅ SIMPAN STATUS LOGIN
-                        localStorage.setItem("userLoggedIn", "true");
+  const form = document.getElementById("register-form");
 
-                        // ✅ TAMPILKAN POPUP
-                        alert("Terima kasih, login anda telah berhasil. Silakan mengakses fitur yang kami sediakan.");
+  if (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault(); // Mencegah reload halaman
 
-                        // ✅ REDIRECT KE INDEX
-                        window.location.href = "index.html";
-                    } else {
-                        alert("Terjadi kesalahan saat menyimpan data. Silakan coba lagi.");
-                    }
-                    })
+      // Simulasi pengiriman data ke server
+      const formData = new FormData(form);
 
-                .catch((error) => {
-                  console.error("Error:", error);
-                  alert("Gagal mengirim data. Periksa koneksi Anda.");
-                });
-            });
-          }
-        });
+      fetch("simpandata.php", {
+        method: "POST",
+        body: formData,
+      })
+      .then((response) => response.text())
+      .then((data) => {
+        // Tampilkan data dari server
+        alert(data); // Menampilkan pesan dari PHP (berhasil/gagal)
+        if (data.includes("Pendaftaran berhasil")) {
+          window.location.href = "index.html"; // Redirect ke halaman index setelah berhasil
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        alert("Gagal mengirim data. Periksa koneksi Anda.");
+      });
+    });
+  }
+});
+
       </script>            
 </body>
 </html>
